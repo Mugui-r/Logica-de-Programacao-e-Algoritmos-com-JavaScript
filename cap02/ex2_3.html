@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Revenda de Veículos</h1>
+    <form>
+        <div>
+            <label for="iVeiculo">Modelo do Veículo: </label>
+            <input type="text" id="iVeiculo" required>
+        </div> <br>
+
+        <div>
+            <label for="iValor">Valor do Véiculo: </label>
+            <input type="number" id="iValor" required> 
+        </div> <br>
+        <input type="submit">
+    </form>
+    <h2></h2>
+    <h3></h3>
+    <h4></h4>
+
+    <script>
+        const frm = document.querySelector("form")
+        const resp = document.querySelector("h2")
+        const resp2 = document.querySelector("h3")
+        const resp3 = document.querySelector("h4")
+
+        frm.addEventListener("submit", (e) => {
+            const nome = frm.iVeiculo.value 
+            const valor = Number(frm.iValor.value) * 0.50
+            const parcelas = valor / 12
+
+            resp.innerText = `${nome}`
+            resp2.innerText = `Valor de Entrada: ${valor.toFixed(2)}`
+            resp3.innerText = `Com Parcelas de 12x: ${parcelas.toFixed(2)}`
+
+            e.preventDefault()
+
+        })
+
+    </script>
+</body>
+</html>

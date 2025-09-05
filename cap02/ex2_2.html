@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h1>Cinema Magé - filme em cartaz:</h1> <br>
+     
+    <form>
+        <div>
+            <label for="inFilme">Nome do filme:</label>
+            <input type="text" id="inFilme" name="filme" required>
+        </div><br>
+
+        <div>
+            <label for="inDuracao">Duração (minutos):</label>
+            <input type="number" id="inDuracao" name="duracao" required>
+        </div><br>
+
+        <input type="submit" value="Converter em Horas e Minutos">
+    </form>
+    
+    <h3></h3>
+    <h4></h4>
+
+    <script>
+        const frm = document.querySelector("form")
+        const resp = document.querySelector("h3")
+        const resp2 = document.querySelector("h4")
+
+        frm.addEventListener ("submit", (e) => {
+            const nome = frm.inFilme.value
+            const horas = Math.floor(frm.inDuracao.value / 60)
+            const minutos = frm.inDuracao.value % 60 
+
+            resp.innerText = `${nome}`
+            resp2.innerText = `${horas} horas e ${minutos} minutos.`
+
+            e.preventDefault()
+        }) 
+    </script>
+</body>
+</html>

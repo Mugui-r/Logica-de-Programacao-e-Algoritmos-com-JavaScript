@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h1>Farmacia Magé</h1>
+
+    <form>
+        <div>
+            <label for="inNome">Medicamento: </label>
+            <input type="text" id="inNome" required> 
+        </div> <br>
+
+        <div>
+            <label for="inValor">Preço R$:</label>
+            <input type="number" id="inValor" step="0.01" min="0">
+        </div> <br>
+
+        <input type="submit" value="Mostrar Promoção">
+    </form>
+
+    <h2></h2>
+    <h3></h3>
+
+    <script>
+        const frm = document.querySelector("form")
+        const resp1 = document.querySelector("h2")
+        const resp2 = document.querySelector("h3") 
+
+        frm.addEventListener("submit", (e) => {
+            const nome = frm.inNome.value
+            const valor = frm.inValor.value
+            const promo = Number(Math.floor(valor * 2))
+
+            resp1.innerText = `Promoção de ${nome}`
+            resp2.innerText = `Leve 2 por apenas R$${promo.toFixed(2)}`
+
+            e.preventDefault()
+
+        })
+    </script>
+
+</body>
+</html>

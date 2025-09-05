@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .vermelho {
+            color: red;
+        }
+
+        .azul {
+            color: blue; /*Encontrei essa forma de mudar a cor do texto no if e else, agora eu sei que podia ter mudado direto no script.*/
+        }
+
+    </style>
+</head>
+<body>
+    <h1 class="h1">Programa Situação do Aluno</h1>
+    <form>
+        <div>
+            <label for="inNome">Nome do Aluno: </labe
+            <input type="text" id="inNome" required>
+        </div> <br>
+
+        <div>
+            <label for="inNota1">1ª Nota: </label>
+            <input type="number" id="inNota1" step="0.1" min="0" required>
+        </div> <br>
+
+        <div>
+            <label for="inNota2">2ª Nota: </label>
+            <input type="number" id="inNota2" step="0.1" min="0" required>
+        </div> <br>
+
+        <input type="submit" value="Exibir Média e Situação">
+
+    </form>
+
+    <h2></h2>
+    <h3 id="h3-v" class="vermelho"></h3>
+    <h3 id="h3-a" class="azul"></h3>
+    
+    
+    <script>
+        const frm = document.querySelector("form")
+
+        respAzul = document.querySelector("#h3-a")
+        respVermelho = document.querySelector("#h3-v")
+        resp = document.querySelector("h2")
+
+        frm.addEventListener("submit", (e) => {
+            e.preventDefault()
+           
+            try { 
+                const aluno = frm.inNome.value
+                const nota1 = Number(frm.inNota1.value);
+                const nota2 = Number(frm.inNota2.value);
+
+
+                const soma = nota1 + nota2;
+                const media = soma / 2
+
+
+                if(media >= 7 ){
+                    
+                    respAzul.innerText = `Parabéns ${aluno} Você foi aprovado!`
+            } else {
+                if(media <= 6){
+                    
+                    respVermelho.innerText = `Ops ${aluno} Você foi reprovado!` 
+                }
+            }
+
+            resp.innerText = `Media das Notas ${media.toFixed(1)}`
+
+            
+            } catch(error) {
+                console.error("Algo deu errado! Detalhes do erro:", error)
+            }
+
+        })
+
+    </script>
+</body>
+</html>

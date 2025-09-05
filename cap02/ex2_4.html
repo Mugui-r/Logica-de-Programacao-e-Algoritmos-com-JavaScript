@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Restaurante</h1>
+    <form>
+        <div>
+            <label for="iKg">Preço por kg: </label>
+            <input type="number" id="iKg" step="0.01" required>
+        </div> <br>
+
+        <div>
+            <label for="iG">Preço por grama: </label>
+            <input type="number" id="iG" required>
+        </div> <br>
+        <input type="submit" value="Calcular valor do rango">
+    </form>
+    <h2></h2>
+
+    <script>
+        const frm = document.querySelector("form")
+        const resp = document.querySelector("h2")
+
+        frm.addEventListener("submit", (e) => {
+            valorKg = Number(frm.iKg.value)
+            valorConvertida = Number(frm.iG.value / 1000)
+
+            valor = Number(frm.iKg.value * valorConvertida) 
+
+            resp.innerText = `Valor a pagar: ${valor.toFixed(2)}`
+
+            e.preventDefault()
+
+        })
+
+    </script>
+</body>
+</html> 

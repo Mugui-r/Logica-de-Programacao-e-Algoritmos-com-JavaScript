@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="icon" type="image/png" href="img/gbay1ebwcaac5yh-removebg-preview.png" alt="Logotipo ou imagem descritiva do programa">
+    <link rel="stylesheet" href="css/estilos4_2.css">
+</head>
+<body>
+    
+    <img src="img/gbay1ebwcaac5yh-removebg-preview copy.jpg" alt="foto do meu programa">
+    <h1>Programa Cálculo do Peso Ideal</h1>
+
+    <form>
+        <div>
+            <label for="inNome">Nome: </label>
+            <input type="text" id="inNome" required>
+        </div> <br>
+
+        <div>      
+            <label for="titulo">Sexo: </label>
+            
+            <input type="radio" id="masculino" name="sexo" value="Masculino" checked>
+            <label for="masculino">Masculino </label>
+            
+            <input type="radio" id="feminino" name="sexo" value="Feminino" checked>
+            <label for="feminino">Feminino </label>
+        </div> <br>
+
+        <div>
+            <label for="inAltura">Altura (ex: 1.80): </label>
+            <input type="number" id="inAltura" step="0.01"  required>
+        </div> <br>
+
+        <input type="submit" id="cal" value="Calcular Peso Ideal">
+        <input type="reset" id="Limpar" value="Limpar Campos">
+        
+
+    </form>
+        <h2></h2>
+    
+    <script>
+        const frm = document.querySelector("form")
+        const resp = document.querySelector("h2")
+
+        frm.addEventListener("submit", (e) =>{
+        e.preventDefault()
+
+            try {
+                const opcao = document.querySelector('input[name="sexo"]:checked')
+                const nome = frm.inNome.value 
+                const sexo = opcao.value
+                const conversao = Number(frm.inAltura.value) * 100
+            
+
+                if(sexo === 'Masculino'){
+
+                    const calculo = conversao - 152
+                    const resultado = calculo * 0.9 + 50
+
+                    resp.textContent = `${nome}: Seu peso ideal estimado é: ${resultado.toFixed(3)} kg`
+
+                } else if(sexo === 'Feminino') {
+                    const calculo = conversao - 152
+                    const resultado = calculo * 0.9 + 45.5
+
+                    resp.textContent = `${nome}: Seu peso ideal estimado é: ${resultado.toFixed(3)} kg`
+
+                }
+
+                
+            
+            
+            
+            
+            
+            } catch (error) {
+                console.log("Ocorreu um erro!")
+                
+            }
+        })
+        frm.addEventListener("reset", (e) =>{
+            resp.innerText = ""
+        })
+
+    </script>
+    
+</body>
+</html>

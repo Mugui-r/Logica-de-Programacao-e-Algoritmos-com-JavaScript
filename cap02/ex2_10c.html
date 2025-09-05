@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Supermercado Magé</h1>
+    <form action="">
+        <div>
+            <label for="inProduto">Produto: </label>
+            <input type="text" id="inProduto" required>
+        
+        </div><br>
+
+        <div>
+            <label for="inPreço">Preço: </label>
+            <input type="number" id="inPreco" step="0.01" min="0" required>
+
+        </div><br>
+        <input type="submit" value="Ver Promoção">
+
+    </form>
+
+    <h2 id="h2-a"></h2>
+    <h2 id="h2-b"></h2>
+
+    <script>
+        const frm = document.querySelector("form")
+        const resp1 = document.querySelector("#h2-a")
+        const resp2 = document.querySelector("#h2-b")
+
+        frm.addEventListener("submit", (e) => {
+            const produto = frm.inProduto.value
+            const preco = Number(frm.inPreco.value)
+
+            const desconto = Number(preco * 0.50)
+            const valor = Number(preco * 2)
+            const valorComDesconto = Number(valor + desconto)
+            
+            resp1.innerText = `${produto} - Promoção: Leve 3 por R$: ${valorComDesconto.toFixed(2)}`
+            resp2.innerText = `O 3º produto custa apenas R$: ${desconto.toFixed(2)}`
+
+            e.preventDefault()
+
+        })
+
+    </script>
+
+</body>
+</html>
